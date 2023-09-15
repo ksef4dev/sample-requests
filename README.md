@@ -4,20 +4,23 @@ Przykładowe wywołania w formacie Jetbrains Http Client
 
 https://www.jetbrains.com/help/idea/exploring-http-syntax.html
 
-W cepu uruchomienia wywołań należy utworzyć plik: `http-client.private.env.json` (https://www.jetbrains.com/help/idea/exploring-http-syntax.html#environment-variables) i umieścić w nim:
+W celu uruchomienia przykładowych wywołań należy utworzyć plik: `http-client.private.env.json` (https://www.jetbrains.com/help/idea/exploring-http-syntax.html#environment-variables) i umieścić w nim:
 
-- Aktualny token sesyjny jako `token`
-- Do nawiązania sesji interaktywnej potrzebny jest także `encryptedToken`
+- aktualny token sesyjny jako `token`
+- numer NIP jako `nip`
+- do testowania nawiązania sesji interaktywnej potrzebny jest także `encryptedToken` i `challenge`. Można użyć klasy Java `EncryptAuthorizationToken` z repozytorium [ksef-java-sample](https://github.com/ksef4dev/ksef-java-sample), która po podaniu NIP i tokena autoryzacyjnego wyświetli zaszyfrowany token i challenge.
 
 ````json
 {
   "test": {
     "token": "............................",
-    "encryptedToken": "................................"
+    "nip": ".........",
+    "encryptedToken": "................................",
+    "challenge": "...."
   }
 }
 ````
 
-# UUruchomienie poza IntelliJ
+# Uruchomienie poza IntelliJ
 
 https://www.jetbrains.com/help/idea/http-client-cli.html

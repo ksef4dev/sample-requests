@@ -18,6 +18,7 @@ Content-Type: application/json
 %}
 
 ### InitSessionTokenRequest
+# jeśli masz zaszyfrowany token i challange to umieść te wartości w pliku http-client.private.env.json przed wywołaniem
 POST https://{{host}}.mf.gov.pl/api/online/Session/InitToken
 Accept: application/json
 Content-Type: application/octet-stream
@@ -25,7 +26,7 @@ Content-Type: application/octet-stream
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns3:InitSessionTokenRequest xmlns="http://ksef.mf.gov.pl/schema/gtw/svc/online/types/2021/10/01/0001" xmlns:ns2="http://ksef.mf.gov.pl/schema/gtw/svc/types/2021/10/01/0001" xmlns:ns3="http://ksef.mf.gov.pl/schema/gtw/svc/online/auth/request/2021/10/01/0001">
     <ns3:Context>
-        <Challenge>{{challenge}</Challenge>
+        <Challenge>{{challenge}}</Challenge>
         <Identifier xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:SubjectIdentifierByCompanyType">
             <ns2:Identifier>{{nip}}</ns2:Identifier>
         </Identifier>
@@ -41,3 +42,12 @@ Content-Type: application/octet-stream
         <Token>{{encryptedToken}}</Token>
     </ns3:Context>
 </ns3:InitSessionTokenRequest>
+
+> {%
+
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+
+    client.global.set("token", response.body.sessionToken.token);
+%}
