@@ -1,0 +1,28 @@
+### zapytania dla NIP1
+POST https://{{host}}.mf.gov.pl/api/online/Payment/Identifier/Request
+Accept: application/json
+SessionToken: {{token}}
+Content-Type: application/json
+
+{
+  "ksefReferenceNumberList": [
+    "{{ksef_nr2}}"
+  ]
+}
+
+### zapytania dla NIP2
+POST https://{{host}}.mf.gov.pl/api/online/Payment/Identifier/Request
+Accept: application/json
+SessionToken: {{token}}
+Content-Type: application/json
+
+{
+  "ksefReferenceNumberList": [
+    "3333333333-20230922-5E54F8119298-E2",
+    "3333333333-20230921-445411F1006D-FD",
+    "3333333333-20230921-076B383C2B35-66",
+    "3333333333-20230920-2FF2E8D6D59D-9C",
+    "9781399259-20230919-C3D00B4CD97A-62",
+    "3896717236-20230919-92AE96528F8C-6C"
+  ]
+}

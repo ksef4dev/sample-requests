@@ -1,3 +1,11 @@
+### test
+POST http://localhost:8080/api/online/Session/AuthorisationChallenge
+Accept: application/json
+Content-Type: application/json
+
+{"contextIdentifier":{"type":"onip","identifier":"3896717236"}}
+
+
 ### AuthorisationChallenge
 POST https://{{host}}.mf.gov.pl/api/online/Session/AuthorisationChallenge
 Accept: application/json
@@ -51,3 +59,7 @@ Content-Type: application/octet-stream
 
     client.global.set("token", response.body.sessionToken.token);
 %}
+
+### Session status
+GET https://{{host}}.mf.gov.pl/api/online/Session/Status?PageSize=100&PageOffset=0&IncludeDetails=true
+SessionToken: {{token}}
