@@ -1,0 +1,15 @@
+### Get UPO old style
+GET https://{{host}}.mf.gov.pl/api/common/Status/20231105-SE-98AAE08108-D7293A3AEC-98
+Accept: application/json
+
+### Get UPO URL
+GET https://{{host}}.mf.gov.pl/api/common/Status/20231105-SE-98AAE08108-D7293A3AEC-98
+Accept: application/vnd.v3+json
+
+> {%
+    client.global.set("upoUrl", response.body.upoUrl);
+ %}
+
+### Get UPO with UPO Reference number
+GET {{upoUrl}}
+Accept: application/vnd.v3+octet-stream
