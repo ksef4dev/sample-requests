@@ -1,9 +1,19 @@
+### Close session
+GET https://{{host}}.mf.gov.pl/api/online/Session/Terminate
+Accept: application/json
+SessionToken: {{token}}
+
+### Check active session status
+GET https://{{host}}.mf.gov.pl/api/online/Session/Status?PageSize=10&PageOffset=0&IncludeDetails=false
+Accept: application/json
+SessionToken: {{token}}
+
 ### Get UPO old style
-GET https://{{host}}.mf.gov.pl/api/common/Status/20231105-SE-98AAE08108-D7293A3AEC-98
+GET https://{{host}}.mf.gov.pl/api/common/Status/{{sessionId}}
 Accept: application/json
 
-### Get UPO URL
-GET https://{{host}}.mf.gov.pl/api/common/Status/20231105-SE-98AAE08108-D7293A3AEC-98
+### Check session status and get UPO URL
+GET https://{{host}}.mf.gov.pl/api/common/Status/{{sessionId}}
 Accept: application/vnd.v3+json
 
 > {%

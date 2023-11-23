@@ -17,3 +17,7 @@ SessionToken: {{token}}
 GET https://{{host}}.mf.gov.pl/api/online/Invoice/Get/1250753505-20230831-1AB5EE5FBF3A-26
 SessionToken: {{token}}
 accept: application/octet-stream
+
+### Invoice status by reference
+GET https://{{host}}.mf.gov.pl/api/online/Invoice/Status/{{invoiceReference}}
+SessionToken: {{token}}
