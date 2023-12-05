@@ -21,3 +21,40 @@ accept: application/octet-stream
 ### Invoice status by reference
 GET https://{{host}}.mf.gov.pl/api/online/Invoice/Status/{{invoiceReference}}
 SessionToken: {{token}}
+
+### Invoice Async Query
+POST https://{{host}}.mf.gov.pl/api/online/Query/Invoice/Async/Init
+Content-Type: application/json
+Accept: application/json
+SessionToken: {{token}}
+
+{
+  "queryCriteria": {
+    "subjectType": "subject1",
+    "type": "detail",
+    "invoicingDateFrom": "2023-11-30T00:00:00+00:00",
+    "invoicingDateTo": "2023-11-30T23:59:59+00:00"
+  }
+}
+
+> {%
+
+    client.global.set("queryElementReferenceNumber", response.body.elementReferenceNumber);
+
+%}
+
+### Invoice Async Query Status
+GET https://{{host}}.mf.gov.pl/api/online/Query/Invoice/Async/Status/{{queryElementReferenceNumber}}
+Accept: application/json
+SessionToken: {{token}}
+
+> {%
+
+    client.global.set("partReferenceNumber", response.body.partList[0].partReferenceNumber);
+
+%}
+
+### Invoice Async Query Results
+GET https://{{host}}.mf.gov.pl/api/online/Query/Invoice/Async/Fetch/{{queryElementReferenceNumber}}/{{partReferenceNumber}}
+Accept: application/octet-stream
+SessionToken: {{token}}
