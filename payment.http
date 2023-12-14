@@ -26,3 +26,9 @@ Content-Type: application/json
     "3896717236-20230919-92AE96528F8C-6C"
   ]
 }
+
+### Rozkodowanie ID - nie działa, niezależnie czy z tokenem czy bez: "24001 Nieprawidłowy numer referencyjny"
+
+GET https://ksef.mf.gov.pl/api/online/Payment/Identifier/GetReferenceNumbers/{{paymentIdentifier}}
+accept: application/json
+SessionToken: {{token}}
